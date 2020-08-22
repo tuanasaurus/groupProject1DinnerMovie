@@ -126,7 +126,7 @@ $(document).ready(function () {
         }).then(function(response){
             console.log(response);
             console.log(response.total_results);
-            // returnResults(response,randomIndex);
+            returnResults(response,randomIndex);
            
         
         })
