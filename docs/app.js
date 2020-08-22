@@ -23,13 +23,22 @@ $(document).ready(function () {
                 for (let i = 0; i < 3; i++) {
                     let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
                     let restaurant = response.businesses[randomRestaurant].name;
+                    let image = response.businesses[randomRestaurant].image_url;
+                    let url = response.businesses[randomRestaurant].url;
+                    let phone = response.businesses[randomRestaurant].phone;
+                    let price = response.businesses[randomRestaurant].price;
                     let city = response.businesses[randomRestaurant].location.city;
                     const categories = response.businesses[randomRestaurant].categories;
                     for (let index = 0; index < categories.length; index++) {
                         if (categoriesArray.includes(categories[index].alias)) {
                             console.log(restaurant);
                             // this is for appending name of restaurant
-                            $('#alias').append(restaurant);
+                            $('#name').append.text(restaurant);
+                            $('#image-url').attr('href', image);
+                            $('#url').attr('href', url);
+                            $('#phone').append.text(phone);
+                            $('#price').append.text(price);
+                            $('#city').append.text(city);
                             break;
                         }
                     }
