@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const apiKey = "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
+    //click functionality to the Locate button to get a random restaurant based on location
     $('#locateButton').click(function () {
         let location = $('#location').val().trim();
         location = encodeURI(location);
@@ -12,13 +13,21 @@ $(document).ready(function () {
             }
         }).then(function (response) {
             console.log(response);
-            let cuisinePick = $('#cuisine').val();
+            const categoriesArray = ['french', 'chinese', 'mediterranean', 'mexican', 'afghani', 'african', 'newamerican', 'tradamerican', 'andalusian', 'brazilian', 'italian', 'pizza', 'sushi', 'steak', 'srilankan', 'spanish', 'southern', 'soup', 'soulfood', 'somali', 'slovakian', 'singaporean', 'scottish', 'schnitzel', 'sandwiches', 'salad', 'rotisserie_chicken', 'portuguese', 'polynesian', 'polish', 'russian', 'pita', 'peruvian', 'persian', 'pakistani', 'noodles', 'nicaraguan', 'nightfood', 'moroccan', 'mongolian', 'modern_european', 'mideastern', 'latin', 'laotian', 'korean', 'kebab', 'jewish', 'japanese', 'israeli', 'international', 'indonesian', 'indpak', 'iberian', 'hungarian', 'hotpot', 'hotdog', 'hkcafe', 'honduran', 'himalayan', 'hawaiian', 'halal', 'greek', 'german', 'ethiopian', 'diners', 'eastern_european', 'comfortfood', 'chilean', 'chicken_wings', 'caribbean', 'cambodian', 'cajun', 'burmese', 'burgers', 'bbq', 'armenian', 'argentine', 'arabian', 'taiwanese', 'tapas', 'tex-mex', 'thai', 'turkish', 'vegan', 'vegetarian', 'vietnamese', 'waffles', 'wok', 'wraps'];
+            
+            //trying to create a variable to hold the selected dropdown option
+            let cuisinePick = $('#cuisineSelect').val();
+
+            //then i want to click the Randomize button to get a random restaurant based on location and cuisine choice
             const $randomizer = $('#random');
-            //let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
-            //let restaurants = response.businesses[randomRestaurant].name;
-            //console.log("randomRestaurant", randomRestaurant);
-            //console.log("restaurants", restaurants);
-            const categoriesArray = ['french', 'chinese', 'mediterranean', 'mexican','afghani','african', 'newamerican', 'tradamerican', 'andalusian', 'brazilian', 'italian', 'pizza', 'sushi'];
+
+            // --IGNORE THE FOLLOWING COMMENTED OUT LINES - KEEPING THEM IN CASE I NEED TO USE: ---
+            let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
+            let restaurants = response.businesses[randomRestaurant].name;
+            console.log("randomRestaurant", randomRestaurant);
+            console.log("restaurants", restaurants);
+
+            //This function loops through the list of restaurants to find 3 random ones
             $randomizer.click(function () {
                 for (let i = 0; i < 3; i++) {
                     let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
@@ -29,10 +38,12 @@ $(document).ready(function () {
                     let price = response.businesses[randomRestaurant].price;
                     let city = response.businesses[randomRestaurant].location.city;
                     const categories = response.businesses[randomRestaurant].categories;
+                    //and then loops through the 3 randomly selected restaurants' categories array
                     for (let index = 0; index < categories.length; index++) {
+                        //and then check if the categoriesArray set on line 21 matches the object categories
                         if (categoriesArray.includes(categories[index].alias)) {
                             console.log(restaurant);
-                            // this is for appending name of restaurant
+                            // this is for appending the restaurant name and other values
                             $('#name').append.text(restaurant);
                             $('#image-url').attr('href', image);
                             $('#url').attr('href', url);
