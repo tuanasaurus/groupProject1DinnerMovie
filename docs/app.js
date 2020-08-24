@@ -214,10 +214,19 @@ $(document).ready(function () {
         url: discoverUrl + key + language + '&with_genres=' + randomGenreID.id + '&page',
         method: 'GET',
     }).then(function (response) {
-        console.log(response);
-        console.log(response.total_pages);
-        let randomPage = getRandomNum(response.total_pages);
-        console.log(randomPage)
+        // console.log(response);
+        // console.log(response.total_pages);
+        // let randomPage = getRandomNum(response.total_pages);
+        // console.log(randomPage)
+
+        let randomGenreFilm = response.results[randomIndex]
+        console.log(randomGenreFilm);
+        let randomGenreTitle = randomGenereFilm.title
+        console.log(randomGenreTitle);
+        let randomGenreInfo = randomGenreFilm.overview;
+        console.log(randomGenreInfo);
+        let randomGenrePoster = randomGenreFilm.poster_path
+        console.log(randomGenrePoster);
         
 
 
