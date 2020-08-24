@@ -61,14 +61,26 @@ $(document).ready(function () {
 
 
     Math.random();
+    // function that gets random number to use for ajax request for random page and index.
     function getRandomNum(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
-    
+    // function for ajax requesting movie previews 
+    // function getMoviePreview(movie_id) {
+    //     $.ajax({
+    //         url: 'https://api.themoviedb.org/3/movie/' + movie_id + '/videos?api_key=3005c900380601fd47b2b821bbb3a101&language=en-USappend_to_response=videos',
+    //     }).then(function (response) {
+    //         let results = response.results;
+    //         let previewKey = results[0].key;
+    //         return previewKey;
+    //     })
+    // }
+       
+
 
     // define variables to construct the url 
     const discoverUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-    const key = '3005c900380601fd47b2b821bbb3a101'
+    const key = '3005c900380601fd47b2b821bbb3a101';
     const language = '&language=en-US';
     const sort = '&sort_by=';
     
@@ -102,6 +114,11 @@ $(document).ready(function () {
         // $('#popularTwoPoster').append.text(topMovies[1].poster_path);
         // $('#popularThreePoster').append.text(topMovies[2].poster_path);
         // $('#popularFourPoster').append.text(topMovies[3].poster_path);
+
+        // getMoviePreview(topMovies[0].id);
+        // console.log(previewKey);
+        // let previewOne = 'https://www.youtube.com/watch?v=' + previewKey
+        // console.log(previewOne) 
      })
 
      // ajax request for random film, to use with genrate random movie.
@@ -113,11 +130,16 @@ $(document).ready(function () {
         console.log(response);
         let randomFilm = response.results[randomIndex];
         console.log(randomFilm)
+        let randomFilmID = randomFilm.id;
+        console.log(randomFilmID);
         let randomFilmTitle = randomFilm.title
         console.log(randomFilmTitle);
         let randomFilmInfo = randomFilm.overview;
         console.log(randomFilmInfo);
         let randomFilmPoster = randomFilm.poster_path
+        console.log(randomFilmPoster);
+
+        getMoviePreview(randomFilmID);
 
 
     })
@@ -221,7 +243,7 @@ $(document).ready(function () {
 
         let randomGenreFilm = response.results[randomIndex]
         console.log(randomGenreFilm);
-        let randomGenreTitle = randomGenereFilm.title
+        let randomGenreTitle = randomGenreFilm.title
         console.log(randomGenreTitle);
         let randomGenreInfo = randomGenreFilm.overview;
         console.log(randomGenreInfo);
