@@ -282,12 +282,12 @@ $(document).ready(function () {
     // console.log(randomPage)
 
     let randomGenreFilm = response.results[randomIndex];
-    console.log(randomGenreFilm);
+    // console.log(randomGenreFilm);
     let randomGenreTitle = randomGenreFilm.title;
-    console.log(randomGenreTitle);
+    // console.log(randomGenreTitle);
     let randomGenreInfo = randomGenreFilm.overview;
-    console.log(randomGenreInfo);
+    // console.log(randomGenreInfo);
     let randomGenrePoster = randomGenreFilm.poster_path;
-    console.log(randomGenrePoster);
+    // console.log(randomGenrePoster);
   });
 });
