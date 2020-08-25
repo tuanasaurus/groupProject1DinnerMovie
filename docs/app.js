@@ -2,7 +2,7 @@ $(document).ready(function () {
   const apiKey =
     "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
   //click functionality to the Locate button to get a random restaurant based on location
-  $("#locateButton").click(function () {
+  $("#locateBtn").click(function () {
     let location = $("#location").val().trim();
     location = encodeURI(location);
     console.log(location);
@@ -21,91 +21,22 @@ $(document).ready(function () {
         "chinese",
         "mediterranean",
         "mexican",
-        "afghani",
-        "african",
-        "newamerican",
         "tradamerican",
-        "andalusian",
-        "brazilian",
         "italian",
         "pizza",
         "sushi",
-        "steak",
-        "srilankan",
-        "spanish",
-        "southern",
-        "soup",
         "soulfood",
-        "somali",
-        "slovakian",
-        "singaporean",
-        "scottish",
-        "schnitzel",
-        "sandwiches",
-        "salad",
-        "rotisserie_chicken",
-        "portuguese",
-        "polynesian",
-        "polish",
-        "russian",
-        "pita",
-        "peruvian",
-        "persian",
-        "pakistani",
-        "noodles",
-        "nicaraguan",
-        "nightfood",
-        "moroccan",
-        "mongolian",
-        "modern_european",
-        "mideastern",
-        "latin",
-        "laotian",
         "korean",
-        "kebab",
-        "jewish",
         "japanese",
-        "israeli",
-        "international",
-        "indonesian",
         "indpak",
-        "iberian",
-        "hungarian",
-        "hotpot",
-        "hotdog",
-        "hkcafe",
-        "honduran",
-        "himalayan",
-        "hawaiian",
-        "halal",
-        "greek",
-        "german",
-        "ethiopian",
-        "diners",
-        "eastern_european",
         "comfortfood",
-        "chilean",
-        "chicken_wings",
-        "caribbean",
-        "cambodian",
-        "cajun",
         "burmese",
         "burgers",
         "bbq",
-        "armenian",
-        "argentine",
-        "arabian",
-        "taiwanese",
-        "tapas",
-        "tex-mex",
         "thai",
-        "turkish",
         "vegan",
         "vegetarian",
         "vietnamese",
-        "waffles",
-        "wok",
-        "wraps",
       ];
 
       //trying to create a variable to hold the selected dropdown option
@@ -152,32 +83,21 @@ $(document).ready(function () {
     });
   });
 
+  Math.random();
   // function that gets random number to use for ajax request for random page and index.
   function getRandomNum(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
-
-  // function that add preview key to youtube url
-  function addYoutubeKey(key) {
-    let previewUrl = "https://www.youtube.com/watch?v=" + key;
-    return previewUrl;
-  }
   // function for ajax requesting movie previews
-  function getMoviePreview(movie_id, callback) {
-    $.ajax({
-      url:
-        "https://api.themoviedb.org/3/movie/" +
-        movie_id +
-        "/videos?api_key=3005c900380601fd47b2b821bbb3a101&language=en-USappend_to_response=videos",
-    }).then(function (response) {
-      let results = response.results;
-      let previewKey = results[0].key;
-      console.log(previewKey);
-      const previewUrl = addYoutubeKey(previewKey);
-      //  calling the callback function to pass previewURL
-      callback(previewUrl);
-    });
-  }
+  // function getMoviePreview(movie_id) {
+  //     $.ajax({
+  //         url: 'https://api.themoviedb.org/3/movie/' + movie_id + '/videos?api_key=3005c900380601fd47b2b821bbb3a101&language=en-USappend_to_response=videos',
+  //     }).then(function (response) {
+  //         let results = response.results;
+  //         let previewKey = results[0].key;
+  //         return previewKey;
+  //     })
+  // }
 
   // define variables to construct the url
   const discoverUrl = "https://api.themoviedb.org/3/discover/movie?api_key=";
@@ -246,20 +166,17 @@ $(document).ready(function () {
   }).then(function (response) {
     console.log(response);
     let randomFilm = response.results[randomIndex];
-    // console.log(randomFilm)
+    console.log(randomFilm);
     let randomFilmID = randomFilm.id;
-    // console.log(randomFilmID);
+    console.log(randomFilmID);
     let randomFilmTitle = randomFilm.title;
-    // console.log(randomFilmTitle);
+    console.log(randomFilmTitle);
     let randomFilmInfo = randomFilm.overview;
-    // console.log(randomFilmInfo);
+    console.log(randomFilmInfo);
     let randomFilmPoster = randomFilm.poster_path;
-    // console.log(randomFilmPoster);
+    console.log(randomFilmPoster);
 
-    // calling a call back function
-    getMoviePreview(randomFilmID, function (previewUrl) {
-      console.log(previewUrl);
-    });
+    getMoviePreview(randomFilmID);
   });
   // begin process of genrating movie based on genere
   // array of objects that contain MDB genres and coorisponding ID tag.
