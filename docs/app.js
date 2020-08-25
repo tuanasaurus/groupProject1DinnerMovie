@@ -39,7 +39,9 @@ $(document).ready(function () {
     console.log(location);
     $.ajax({
       url:
+
         "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=french,chinese,mexican,mediterranean,mexican,tradamerican,italian,pizza,sushi,soulfood,korean,japanese,indpak,comfortfood,burmese,burgers,bbq,thai,vegan,vegetarian,vietnamese&location=" +
+
         location,
       method: "GET",
       headers: {
@@ -142,7 +144,6 @@ $(document).ready(function () {
     // $('#popularOnePoster').append.text(topMovies[0].poster_path);
     // $('#popularTwoPoster').append.text(topMovies[1].poster_path);
     // $('#popularThreePoster').append.text(topMovies[2].poster_path);
-    // $('#popularFourPoster').append.text(topMovies[3].poster_path);
     // getMoviePreview(topMovies[0].id);
     // console.log(previewKey);
     // let previewOne = 'https://www.youtube.com/watch?v=' + previewKey
@@ -163,8 +164,6 @@ $(document).ready(function () {
     console.log(response);
     let randomFilm = response.results[randomIndex];
     console.log(randomFilm);
-    let randomFilmID = randomFilm.id;
-    console.log(randomFilmID);
     let randomFilmTitle = randomFilm.title;
     console.log(randomFilmTitle);
     let randomFilmInfo = randomFilm.overview;
