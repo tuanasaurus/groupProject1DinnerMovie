@@ -22,30 +22,21 @@ $(document).ready(function () {
     "vietnamese",
   ];
   //Grab the location that the user inputted, Grab cuisine that the user inputted, Conditional statement to check whether the cuisine is empty or not, If the cuisine is empty then grab a random cuisine
-  function getLocation() {
-      let location = $("#location").val().trim();
-  }
-  function getCuisines() {
-    //trying to create a variable to hold the selected dropdown option
-    let cuisinePick = $("#cuisineSelect").val();
-    console.log(cuisinePick);
-  }
+
   const apiKey =
     "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
   //click functionality to the Locate button to get a random restaurant based on location
-  $("#locateBtn").click(getLocation, getCuisines, function () {
-    let location = $("#location").val().trim();
+  $("#locateBtn").click(function () {
+    let location = $("#myLocation").val().trim();
     location = encodeURI(location);
     console.log(location);
     $.ajax({
       url:
 
-        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=french,chinese,mexican,mediterranean,mexican,tradamerican,italian,pizza,sushi,soulfood,korean,japanese,indpak,comfortfood,burmese,burgers,bbq,thai,vegan,vegetarian,vietnamese&location=" +
-
-        location,
+        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + location,
       method: "GET",
       headers: {
-        Authorization: "bearer " + apiKey,
+        Authorization: "Bearer " + apiKey,
       },
     }).then(function (response) {
       console.log(response);
@@ -56,8 +47,14 @@ $(document).ready(function () {
       let restaurants = response.businesses[randomRestaurant].name;
       console.log("randomRestaurant", randomRestaurant);
       console.log("restaurants", restaurants);
+      
+      //to target the selected option
+      let cuisinePick = $("#cuisineSelect").val();
+      console.log(cuisinePick);
+
       //This function loops through the list of restaurants to find 3 random ones
       $randomizer.click(function () {
+        console.log("clicked");
         for (let i = 0; i < 3; i++) {
           let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
           let restaurant = response.businesses[randomRestaurant].name;
