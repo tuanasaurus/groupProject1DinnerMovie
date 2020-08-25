@@ -1,164 +1,152 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Let us help you</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
-        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+      integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body>
-    <div class="grid-container">
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <h1>Welcome to Movie Night</h1>
+  <body>
+
+    <div id="header" class="row text-center">
+        <img
+          src="./assets/movie_dinner_logo.png"
+          height="20"
+          width
+          alt
+          id="logo"
+        />
+      </div>
+
+    <div class="row expanded collapse">
+        <div class="column">
+          <div class="large-article-header">
+            <div class="large-article-header-content">
+              <div class="center-container">
+                <div class="article-title">
+                  <h1>Let us simplify picking a movie and dinner for your night in</h1>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<h2 class="type-sidelines custom-2"><span>RANDOMIZE MOVIE BASED ON GENRE</span></h2>
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+        <label>Select a Movie Genre</label>
+        <select>
+            <option value="action">Action</option>
+            <option value="ddventure">Adventure</option>
+            <option value="animation">Animation</option>
+            <option value="comedy">Comedy</option>
+            <option value="crime">Crime</option>
+            <option value="documentary">Documentary</option>
+            <option value="drama">Drama</option>
+            <option value="family">Family</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="history">History</option>
+            <option value="horror">Horror</option>
+            <option value="music">Music</option>
+            <option value="mystery">Mystery</option>
+            <option value="romance">Romance</option>
+            <option value="scienceFiction">Science Fiction</option>
+            <option value="tvMovie">TV Movie</option>
+            <option value="thriller">Thriller</option>
+            <option value="war">War</option>
+            <option value="western">Western</option>
+        </select>
+        <button class="button" id="movieBtnGenre">Pick a movie from genre</button>
+        <button class="button" id="movieBtnRandom">Pick a random movie</button><br />
+        
+        <div class="card" id="movieCard1"></div>
+        <div class="card" id="movieCard2"></div>
+        <div class="card" id="movieCard3"></div>
+            <!-- <img class="movieCard1-img" src="https://placehold.it/350x300" alt="header" />
+            <div class="movieCard1-info">
+            <h1 class="movieCard1-title"></h1>
+            <p class="movieCard1-info"></p>
+            </div> -->
+
+    </div>
+</div>
+</div>
+
+<h2 class="type-sidelines custom-2"><span>RANDOMIZE RESTARAUNT BASED ON CUISINE</span></h2>
+<div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+            <div class="large-4 medium-4 cell">
+                <input type="text" placeholder="Your Location" id="myLocation" />
+            <label>Select a Cuisine</label>
+            <select>
+                <option value="bbq">BBQ</option>
+                <option value="burgers">Burgers</option>
+                <option value="Jburmese">Burmese</option>
+                <option value="chinese">Chinese</option>
+                <option value="comfortfood">Comfort Food</option>
+                <option value="french">French</option>
+                <option value="indpak">iIndian & Pakistani</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+                <option value="korean">Korean</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="mexican">Mexican</option>
+                <option value="pizza">Pizza</option>
+                <option value="sushi">Sushi</option>
+                <option value="soulfood">Soulfood</option>
+                <option value="thai">Thai</option>
+                <option value="tradamerican">Trad American</option>
+                <option value="vegan">Vegan</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vietnamese">Vietnamese</option>
+            </select>
+            <button class="button" id="foodBtnCuisine">Pick a place from cuisine</button>
+
+            <div class="foodCard1"></div>
+            <div class="foodCard2"></div>
+            <div class="foodCard3"></div>
+              </div>
+    
+            </div>
             </div>
         </div>
-        <div id="wrapper">
-            <div class="row">
-                <div class="large-12  columns">
-                    <div class="movie" id="moviePoster"><img src="./assets/background_image.png">
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <div class="callout">
-                    <h3>Let us help you out and simplify picking a movie and food for the night</h3>
-                        <label>Input Label</label>
-                        <input type="text" placeholder="large-4.cell" id="location"/>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="grid-x grid-padding-x">
-            <div class="large-8 medium-8 cell">
-                <h5>Pick a movie, food, or both and we can help you pick one</h5>
-                <label>Select a Movie Genre</label>
-                <select>
-                    <option value="action">Action</option>
-                    <option value="ddventure">Adventure</option>
-                    <option value="animation">Animation</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="crime">Crime</option>
-                    <option value="documentary">Documentary</option>
-                    <option value="drama">Drama</option>
-                    <option value="family">Family</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="history">History</option>
-                    <option value="horror">Horror</option>
-                    <option value="music">Music</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="romance">Romance</option>
-                    <option value="scienceFiction">Science Fiction</option>
-                    <option value="tvMovie">TV Movie</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="war">War</option>
-                    <option value="western">Western</option>
-                </select>
-                <a class="button" id="movieBtnGenre">Pick a movie from genre</a>
-                <a class="button" id="movieBtnRandom">Pick a random movie</a><br />
-
-                <hr />
-
-                <h5>Let us know where you are</h5>
-
-                <p>Where are you located:</p>
-                <div class="grid-x grid-padding-x"></div>
-                <div class="large-4 medium-4 cell">
-                    <input type="text" placeholder="Your Location" id="myLocation" />
-                    <button class="button" id="locateBtn">Pick Random Restaraunt</button>
-                <label>Select a Cuisine</label>
-                <select>
-                    <option value="Pizza">Action</option>
-                    <option value="Japanese">Adventure</option>
-                    <option value="chinese">Animation</option>
-                    <option value="documenatary">Comedy</option>
-                    <option value="Pizza">Crime</option>
-                    <option value="Japanese">Documentary</option>
-                    <option value="chinese">Drama</option>
-                    <option value="documenatary">Family</option>
-                    <option value="Pizza">Fantasy</option>
-                    <option value="Japanese">History</option>
-                    <option value="chinese">Horror</option>
-                    <option value="documenatary">Music</option>
-                    <option value="chinese">Mystery</option>
-                    <option value="documenatary">Romance</option>
-                    <option value="Pizza">Science Fiction</option>
-                    <option value="Japanese">TV Movie</option>
-                    <option value="chinese">Thriller</option>
-                    <option value="documenatary">War</option>
-                    <option value="documenatary">Western</option>
-                </select>
-                <button class="button" id="foodBtnCuisine">Pick a place from cuisine</button>
-                <br />
-                <hr />
-                <button class="button" id="random">Randomize both</button><br />
-                <hr />
-                <div class="card" style="width: 300px;">
-                    <div class="card-divider">
-                        <div id="movie1"></div>
-                    </div>
-                    <div class="card-section"></div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <div class="card-divider"></div>
-                    <div class="movie2"></div>
-                    <div class="card-section"></div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <div class="card-divider"></div>
-                    <div class="movie3">
-                    </div>
-                    <div class="card-section">
-                    </div>
-                </div>
-                <div class="card" style="width: 300px;">
-                    <div class="card" style="width: 300px;">
-                        <div class="card-divider"></div>
-                        <div class="food1"></div>
-                        <div class="card-section">
-                            <a href="#0" class="button">Eat Here</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 300px;">
-                        <div class="card-divider"></div>
-                        <div class="food2"></div>
-                        <div class="card-section">
-                            <a href="#0" class="button">Eat Here</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 300px;">
-                        <div class="card-divider"></div>
-                        <div class="food3"></div>
-                        <div class="card-section">
-                            <a href="#0" class="button">Eat Here</a>
-                        </div>
-                    </div>
-                    <div class="grid-x grid-padding-x">
-
-                    </div>
-                    </form>
-                </div>
-                    <div class="grid-x grid-padding-x">
-                    </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
-        integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</div>
+</div>
+
+    
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+      integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
     <script src="./app.js"></script>
-
-</body>
-
+  </body>
 </html>
