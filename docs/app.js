@@ -1,14 +1,45 @@
 $(document).ready(function () {
+  const categoriesArray = [
+    "french",
+    "chinese",
+    "mediterranean",
+    "mexican",
+    "tradamerican",
+    "italian",
+    "pizza",
+    "sushi",
+    "soulfood",
+    "korean",
+    "japanese",
+    "indpak",
+    "comfortfood",
+    "burmese",
+    "burgers",
+    "bbq",
+    "thai",
+    "vegan",
+    "vegetarian",
+    "vietnamese",
+  ];
+  //Grab the location that the user inputted, Grab cuisine that the user inputted, Conditional statement to check whether the cuisine is empty or not, If the cuisine is empty then grab a random cuisine
+  function getLocation() {
+      let location = $("#location").val().trim();
+  }
+  function getCuisines() {
+    //trying to create a variable to hold the selected dropdown option
+    let cuisinePick = $("#cuisineSelect").val();
+    console.log(cuisinePick);
+  }
   const apiKey =
     "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
   //click functionality to the Locate button to get a random restaurant based on location
-  $("#locateBtn").click(function () {
+  $("#locateBtn").click(getLocation, getCuisines, function () {
     let location = $("#location").val().trim();
     location = encodeURI(location);
     console.log(location);
     $.ajax({
       url:
-        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=french,chinese,mexican,mediterranean&location=" +
+        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=french,chinese,mexican,mediterranean,mexican,tradamerican,italian,pizza,sushi,soulfood,korean,japanese,indpak,comfortfood,burmese,burgers,bbq,thai,vegan,vegetarian,vietnamese&location=" +
         location,
       method: "GET",
       headers: {
@@ -16,41 +47,13 @@ $(document).ready(function () {
       },
     }).then(function (response) {
       console.log(response);
-      const categoriesArray = [
-        "french",
-        "chinese",
-        "mediterranean",
-        "mexican",
-        "tradamerican",
-        "italian",
-        "pizza",
-        "sushi",
-        "soulfood",
-        "korean",
-        "japanese",
-        "indpak",
-        "comfortfood",
-        "burmese",
-        "burgers",
-        "bbq",
-        "thai",
-        "vegan",
-        "vegetarian",
-        "vietnamese",
-      ];
-
-      //trying to create a variable to hold the selected dropdown option
-      let cuisinePick = $("#cuisineSelect").val();
-
       //then i want to click the Randomize button to get a random restaurant based on location and cuisine choice
       const $randomizer = $("#random");
-
       // --IGNORE THE FOLLOWING COMMENTED OUT LINES - KEEPING THEM IN CASE I NEED TO USE: ---
       let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
       let restaurants = response.businesses[randomRestaurant].name;
       console.log("randomRestaurant", randomRestaurant);
       console.log("restaurants", restaurants);
-
       //This function loops through the list of restaurants to find 3 random ones
       $randomizer.click(function () {
         for (let i = 0; i < 3; i++) {
@@ -82,7 +85,6 @@ $(document).ready(function () {
       });
     });
   });
-
   Math.random();
   // function that gets random number to use for ajax request for random page and index.
   function getRandomNum(max) {
@@ -98,13 +100,11 @@ $(document).ready(function () {
   //         return previewKey;
   //     })
   // }
-
   // define variables to construct the url
   const discoverUrl = "https://api.themoviedb.org/3/discover/movie?api_key=";
   const key = "3005c900380601fd47b2b821bbb3a101";
   const language = "&language=en-US";
   const sort = "&sort_by=";
-
   // const sortOptions = ['popularity.desc', 'release_date.desc', 'primary_release_date.desc', 'vote_avrage.desc'];
   let pageindex = getRandomNum(500 + 1);
   let randomIndex = getRandomNum(20);
@@ -133,25 +133,21 @@ $(document).ready(function () {
     // $('#popularTwo').append.text(topMovies[1].title);
     // $('#popularThree').append.text(topMovies[2].title);
     // $('#popularFour').append.text(topMovies[3].title);
-
     // brief description of movie.
     // $('#popularOneInfo').append.text(topMovies[0].overview);
     // $('#popularTwoInfo').append.text(topMovies[1].overview);
     // $('#popularThreeInfo').append.text(topMovies[2].overview);
     // $('#popularFourInfo').append.text(topMovies[3].overview);
-
     // poster of movie
     // $('#popularOnePoster').append.text(topMovies[0].poster_path);
     // $('#popularTwoPoster').append.text(topMovies[1].poster_path);
     // $('#popularThreePoster').append.text(topMovies[2].poster_path);
     // $('#popularFourPoster').append.text(topMovies[3].poster_path);
-
     // getMoviePreview(topMovies[0].id);
     // console.log(previewKey);
     // let previewOne = 'https://www.youtube.com/watch?v=' + previewKey
     // console.log(previewOne)
   });
-
   // ajax request for random film, to use with genrate random movie.
   $.ajax({
     // adding options in the url to sort by populariy, exclude adult titles and select a random page number.
@@ -175,7 +171,6 @@ $(document).ready(function () {
     console.log(randomFilmInfo);
     let randomFilmPoster = randomFilm.poster_path;
     console.log(randomFilmPoster);
-
     getMoviePreview(randomFilmID);
   });
   // begin process of genrating movie based on genere
@@ -262,7 +257,6 @@ $(document).ready(function () {
   const randomNumber = Math.floor(Math.random() * length + 0);
   let randomGenreID = genres[Object.keys(genres)[randomNumber]];
   console.log(randomGenreID.id);
-
   // let randomGenreID = genres.id[Math.floor(Math.random() * genres.length)];
   // console.log(randomGenreID);
   // ajax to use with the geneate random genre
@@ -280,7 +274,6 @@ $(document).ready(function () {
     // console.log(response.total_pages);
     // let randomPage = getRandomNum(response.total_pages);
     // console.log(randomPage)
-
     let randomGenreFilm = response.results[randomIndex];
     // console.log(randomGenreFilm);
     let randomGenreTitle = randomGenreFilm.title;
