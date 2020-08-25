@@ -89,16 +89,28 @@ $(document).ready(function () {
   function getRandomNum(max) {
     return Math.floor(Math.random() * Math.floor(max));
   }
+  // function that add preview key to youtube url
+  function addYoutubeKey(key) {
+    let previewUrl = "https://www.youtube.com/watch?v=" + key;
+    return previewUrl;
+  }
   // function for ajax requesting movie previews
-  // function getMoviePreview(movie_id) {
-  //     $.ajax({
-  //         url: 'https://api.themoviedb.org/3/movie/' + movie_id + '/videos?api_key=3005c900380601fd47b2b821bbb3a101&language=en-USappend_to_response=videos',
-  //     }).then(function (response) {
-  //         let results = response.results;
-  //         let previewKey = results[0].key;
-  //         return previewKey;
-  //     })
-  // }
+  function getMoviePreview(movie_id, callback) {
+    $.ajax({
+      url:
+        "https://api.themoviedb.org/3/movie/" +
+        movie_id +
+        "/videos?api_key=3005c900380601fd47b2b821bbb3a101&language=en-USappend_to_response=videos",
+    }).then(function (response) {
+      let results = response.results;
+      let previewKey = results[0].key;
+      console.log(previewKey);
+      const previewUrl = addYoutubeKey(previewKey);
+      //  calling the callback function to pass previewURL
+      callback(previewUrl);
+    });
+  }
+
   // define variables to construct the url
   const discoverUrl = "https://api.themoviedb.org/3/discover/movie?api_key=";
   const key = "3005c900380601fd47b2b821bbb3a101";
@@ -160,14 +172,20 @@ $(document).ready(function () {
   }).then(function (response) {
     console.log(response);
     let randomFilm = response.results[randomIndex];
-    console.log(randomFilm);
+    // console.log(randomFilm)
+    let randomFilmID = randomFilm.id;
+    // console.log(randomFilmID);
     let randomFilmTitle = randomFilm.title;
-    console.log(randomFilmTitle);
+    // console.log(randomFilmTitle);
     let randomFilmInfo = randomFilm.overview;
-    console.log(randomFilmInfo);
+    // console.log(randomFilmInfo);
     let randomFilmPoster = randomFilm.poster_path;
-    console.log(randomFilmPoster);
-    getMoviePreview(randomFilmID);
+    // console.log(randomFilmPoster);
+
+    // calling a call back function
+    getMoviePreview(randomFilmID, function (previewUrl) {
+      console.log(previewUrl);
+    });
   });
   // begin process of genrating movie based on genere
   // array of objects that contain MDB genres and coorisponding ID tag.
