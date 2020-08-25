@@ -1,28 +1,31 @@
 $(document).ready(function () {
   const categoriesArray = [
-    "french",
+    "bbq",
+    "burgers",
+    "burmese",
     "chinese",
+    "comfortfood",
+    "french",
+    "indpak",
+    "italian",
+    "japanese",
+    "korean",
     "mediterranean",
     "mexican",
-    "tradamerican",
-    "italian",
     "pizza",
     "sushi",
     "soulfood",
-    "korean",
-    "japanese",
-    "indpak",
-    "comfortfood",
-    "burmese",
-    "burgers",
-    "bbq",
     "thai",
+    "tradamerican",
     "vegan",
     "vegetarian",
     "vietnamese",
   ];
-  //Grab the location that the user inputted, Grab cuisine that the user inputted, Conditional statement to check whether the cuisine is empty or not, If the cuisine is empty then grab a random cuisine
 
+  //Grab the location that the user inputted,
+  // Grab cuisine that the user inputted,
+  // Conditional statement to check whether the cuisine is empty or not,
+  //If the cuisine is empty then grab a random cuisine
   const apiKey =
     "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
   //click functionality to the Locate button to get a random restaurant based on location
@@ -32,8 +35,8 @@ $(document).ready(function () {
     console.log(location);
     $.ajax({
       url:
-
-        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" + location,
+        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
+        location,
       method: "GET",
       headers: {
         Authorization: "Bearer " + apiKey,
@@ -47,7 +50,7 @@ $(document).ready(function () {
       let restaurants = response.businesses[randomRestaurant].name;
       console.log("randomRestaurant", randomRestaurant);
       console.log("restaurants", restaurants);
-      
+
       //to target the selected option
       let cuisinePick = $("#cuisineSelect").val();
       console.log(cuisinePick);
@@ -180,13 +183,90 @@ $(document).ready(function () {
     let randomFilmInfo = randomFilm.overview;
     // console.log(randomFilmInfo);
     let randomFilmPoster = randomFilm.poster_path;
-    // console.log(randomFilmPoster);
+    console.log(randomFilmPoster);
+
+
+    const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
+    const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
+    const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
+    $("#movieCard1").append(moviePoster, movieTitle, movieInfo );
 
     // calling a call back function
     getMoviePreview(randomFilmID, function (previewUrl) {
       console.log(previewUrl);
     });
   });
+
+  $.ajax({
+    // adding options in the url to sort by populariy, exclude adult titles and select a random page number.
+    url:
+      discoverUrl +
+      key +
+      language +
+      sort +
+      "popularity.desc&include_adult=false&include_video=false&page=" +
+      pageindex,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    let randomFilm = response.results[randomIndex];
+    // console.log(randomFilm)
+    let randomFilmID = randomFilm.id;
+    // console.log(randomFilmID);
+    let randomFilmTitle = randomFilm.title;
+    // console.log(randomFilmTitle);
+    let randomFilmInfo = randomFilm.overview;
+    // console.log(randomFilmInfo);
+    let randomFilmPoster = randomFilm.poster_path;
+    console.log(randomFilmPoster);
+
+
+    const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
+    const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
+    const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
+    $("#movieCard2").append(moviePoster, movieTitle, movieInfo );
+
+    // calling a call back function
+    getMoviePreview(randomFilmID, function (previewUrl) {
+      console.log(previewUrl);
+    });
+  });
+
+  $.ajax({
+    // adding options in the url to sort by populariy, exclude adult titles and select a random page number.
+    url:
+      discoverUrl +
+      key +
+      language +
+      sort +
+      "popularity.desc&include_adult=false&include_video=false&page=" +
+      pageindex,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    let randomFilm = response.results[randomIndex];
+    // console.log(randomFilm)
+    let randomFilmID = randomFilm.id;
+    // console.log(randomFilmID);
+    let randomFilmTitle = randomFilm.title;
+    // console.log(randomFilmTitle);
+    let randomFilmInfo = randomFilm.overview;
+    // console.log(randomFilmInfo);
+    let randomFilmPoster = randomFilm.poster_path;
+    console.log(randomFilmPoster);
+
+
+    const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
+    const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
+    const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
+    $("#movieCard3").append(moviePoster, movieTitle, movieInfo );
+
+    // calling a call back function
+    getMoviePreview(randomFilmID, function (previewUrl) {
+      console.log(previewUrl);
+    });
+  });
+
   // begin process of genrating movie based on genere
   // array of objects that contain MDB genres and coorisponding ID tag.
   let genres = [
@@ -297,4 +377,7 @@ $(document).ready(function () {
     let randomGenrePoster = randomGenreFilm.poster_path;
     // console.log(randomGenrePoster);
   });
+
+
+
 });
