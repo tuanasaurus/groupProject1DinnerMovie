@@ -238,4 +238,9 @@
     justify-self: right;
    
   }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+  }
   

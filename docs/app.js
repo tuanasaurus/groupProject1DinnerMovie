@@ -216,14 +216,27 @@ $(document).ready(function () {
     // console.log(randomFilmInfo);
     let randomFilmPoster = randomFilm.poster_path;
     // console.log(randomFilmPoster);
-    
 
     $("#movieBtnRandom").click(function(){
-    const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
-    const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
-    const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
-    $("#movieCard1").append(moviePoster, movieTitle, movieInfo );
+      const numberToShow = 3;
+      let randomMovies = "";
+      for (i = 0; i < numberToShow; i++){
+        const movieTitle = $("<h1 class='card-title'>").text(response.results[i].title);
+        const movieInfo = $("<p class='card-author'>").text(response.results[i].overview);
+        const moviePoster = $("<img class='card-image'>").attr("src", "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + response.results[i].backdrop_path);
+        console.log(response.results[i]);
+        const movieCard = $("<div class='card cell'>").append(moviePoster, movieTitle, movieInfo);
+        $("#movieCards").append(movieCard);
+        console.log(response.results[i]);
+      }
     });
+    
+    // $("#movieBtnRandom").click(function(){
+    // const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
+    // const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
+    // const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
+    // $("#movieCard1").append(moviePoster, movieTitle, movieInfo );
+    // });
     // calling a call back function
     getMoviePreview(randomFilmID, function (previewUrl) {
       // console.log(previewUrl);
@@ -368,7 +381,7 @@ $(document).ready(function () {
     for (i = 0; i < numberToShow; i++){
       const movieTitle = $("<h1 class='card-title'>").text(response.results[i].title);
       const movieInfo = $("<p class='card-author'>").text(response.results[i].overview);
-      const moviePoster = $("<img class='card-image'>").attr("scr", response.results[i].poster_path);
+      const moviePoster = $("<img class='card-image'>").attr("src", "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + response.results[i].backdrop_path);
       const movieCard = $("<div class='card cell'>").append(moviePoster, movieTitle, movieInfo);
       $("#movieCards").append(movieCard);
       console.log(response.results[i]);
