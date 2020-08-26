@@ -45,19 +45,19 @@ $(document).ready(function () {
     }).then(function (response) {
       console.log(response);
       //then i want to click the Randomize button to get a random restaurant based on location and cuisine choice
-      const $randomizer = $("#random");
+      const $randomizer = $(".random");
       // --IGNORE THE FOLLOWING COMMENTED OUT LINES - KEEPING THEM IN CASE I NEED TO USE: ---
       let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
       let restaurants = response.businesses[randomRestaurant].name;
       console.log("randomRestaurant", randomRestaurant);
       console.log("restaurants", restaurants);
-      
+
       //to target the selected option
       let cuisinePick = $(".cuisineSelect").val();
       console.log(cuisinePick);
 
       //This function loops through the list of restaurants to find 3 random ones
-      $randomizer.click(function () {
+      $randomizer.click(function() {
         console.log("clicked");
         for (let i = 0; i < 3; i++) {
           let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
@@ -82,6 +82,9 @@ $(document).ready(function () {
               $("#city").append.text(city);
               break;
             }
+            const restaurantName = $("<h1 class='card-title'>").text(restaurant);
+            const restaurantUrl = $("<p class='card-author'>").text(url);
+            $("#foodCard1").append(restaurantName, restaurantUrl);
           }
       
           console.log(randomRestaurant);
@@ -356,10 +359,21 @@ $(document).ready(function () {
       name: "western",
     },
   ];
-  const length = Object.keys(genres).length;
-  const randomNumber = Math.floor(Math.random() * length + 0);
-  let randomGenreID = genres[Object.keys(genres)[randomNumber]];
-  console.log(randomGenreID.id);
+
+
+  function getGenreId(){
+    $("#movieBtnGenre").click(function(){
+      if($("#genreSelect").val() === val.name){
+        const genreId = val.id;
+        console.log(genreId);
+      }
+    });
+  }
+  getGenreId();
+  // const length = Object.keys(genres).length;
+  // const randomNumber = Math.floor(Math.random() * length + 0);
+  // let randomGenreID = genres[Object.keys(genres)[randomNumber]];
+  // console.log(randomGenreID.id);
   // let randomGenreID = genres.id[Math.floor(Math.random() * genres.length)];
   // console.log(randomGenreID);
   // ajax to use with the geneate random genre
@@ -394,38 +408,46 @@ $(document).ready(function () {
 
     const genreSelection = $("#genreSelect").val();  
 
-    // $("#movieBtnGenre").click(function(){
-    //   for(var i=1; i<genres.length; i++){
-    //     if(genreSelection === genres[i].name) {
-    //       const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle);
-    //       const movieInfo = $("<p class='card-author'>").text(randomGenreInfo);
-    //       const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster);
-    //   $("#movieCard1").append(moviePoster, movieTitle, movieInfo )
-    //   console.log("testgenre", genreSelection);
-    //     }
-    //   }
-    // });
-
-
+    $("#movieBtnGenre").click(function(){
+      genres.forEach(function (val,){
+        if($("#genreSelect").val() === val.name){
+        console.log(val.name)
+            const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle);
+            const movieInfo = $("<p class='card-author'>").text(randomGenreInfo);
+            const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster);
+        $("#movieCard1").append(moviePoster, movieTitle, movieInfo )
+        console.log("testgenre", genreSelection);
+        }
+      })
+    });
+  
+    $("#movieBtnGenre").click(function(){
+      genres.forEach(function (val,){
+        if($("#genreSelect").val() === val.name){
+        console.log(val.name)
+            const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle2);
+            const movieInfo = $("<p class='card-author'>").text(randomGenreInfo2);
+            const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster2);
+        $("#movieCard2").append(moviePoster, movieTitle, movieInfo )
+        console.log("testgenre", genreSelection);
+        }
+      })
     });
 
-    // $("#movieBtnGenre").click(function(){
-    //   if(value === genres.name){
-    //     const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle2);
-    //     const movieInfo = $("<p class='card-author'>").text(randomGenreInfo2);
-    //     const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster2);
-    //     $("#movieCard2").append(moviePoster, movieTitle, movieInfo )
-    //   }
-    // });
-
-    // $("#movieBtnGenre").click(function(){
-    //   if(value === genres.name){
-    //     const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle3);
-    //     const movieInfo = $("<p class='card-author'>").text(randomGenreInfo3);
-    //     const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster3);
-    //     $("#movieCard3").append(moviePoster, movieTitle, movieInfo )
-    //   }
-    // });
+    $("#movieBtnGenre").click(function(){
+      genres.forEach(function (val,){
+        if($("#genreSelect").val() === val.name){
+        console.log(val.name)
+            const movieTitle = $("<h1 class='card-title'>").text(randomGenreTitle3);
+            const movieInfo = $("<p class='card-author'>").text(randomGenreInfo3);
+            const moviePoster = $("<img class='card-image'>").attr("scr", randomGenrePoster3);
+        $("#movieCard3").append(moviePoster, movieTitle, movieInfo )
+        console.log("testgenre", genreSelection);
+        }
+      })
+    });
+  
+    });
 
 
 
