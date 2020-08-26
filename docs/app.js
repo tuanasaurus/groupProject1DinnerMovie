@@ -48,9 +48,39 @@ $(document).ready(function () {
       const $randomizer = $(".random");
       // --IGNORE THE FOLLOWING COMMENTED OUT LINES - KEEPING THEM IN CASE I NEED TO USE: ---
       let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
+
       let restaurants = response.businesses[randomRestaurant].name;
+      let image = response.businesses[randomRestaurant].image_url;
+      let url = response.businesses[randomRestaurant].url;
+      let phone = response.businesses[randomRestaurant].phone;
+      let price = response.businesses[randomRestaurant].price;
+      let city = response.businesses[randomRestaurant].location.city;
+      const categories = response.businesses[randomRestaurant].categories[0].alias;
+
+      let restaurants1 = response.businesses[5].name;
+      let price1 = response.businesses[5].price;
+      const categories1 = response.businesses[5].categories[0].alias;
+
+      let restaurants2 = response.businesses[10].name;
+      let price2 = response.businesses[10].price;
+      const categories2 = response.businesses[10].categories[0].alias;
+
       console.log("randomRestaurant", randomRestaurant);
       console.log("restaurants", restaurants);
+
+      const restaurantName0 = $("<h2 class='card-title'>").text(restaurants);
+      // const restaurantImage0 = $("<img class='card-image'>").src(image);
+      const restaurantPrice0 = $("<p class='card-title'>").text(price);
+      const restaurantCategory0 = $("<p class='card-title'>").text(categories);
+      $("#foodCard1").append(restaurantName0, restaurantPrice0, restaurantCategory0);
+      const restaurantName1 = $("<h2 class='card-title'>").text(restaurants1);
+      const restaurantPrice1 = $("<p class='card-title'>").text(price1);
+      const restaurantCategory1 = $("<p class='card-title'>").text(categories1);
+      $("#foodCard2").append(restaurantName1, restaurantPrice1, restaurantCategory1);
+      const restaurantName2 = $("<h2 class='card-title'>").text(restaurants2);
+      const restaurantPrice2 = $("<p class='card-title'>").text(price2);
+      const restaurantCategory2 = $("<p class='card-title'>").text(categories2);
+      $("#foodCard3").append(restaurantName2, restaurantPrice2, restaurantCategory2);
 
       //to target the selected option
       let cuisinePick = $(".cuisineSelect").val();
@@ -82,11 +112,7 @@ $(document).ready(function () {
               $("#city").append.text(city);
               break;
             }
-            const restaurantName = $("<h1 class='card-title'>").text(restaurant);
-            const restaurantUrl = $("<p class='card-author'>").text(url);
-            $("#foodCard1").append(restaurantName, restaurantUrl);
           }
-      
           console.log(randomRestaurant);
         }
       });
@@ -264,6 +290,7 @@ $(document).ready(function () {
     // console.log(randomFilmTitle);
     let randomFilmInfo = randomFilm.overview;
     // console.log(randomFilmInfo);
+    
     let randomFilmPoster = randomFilm.poster_path;
     console.log(randomFilmPoster);
 
@@ -360,16 +387,7 @@ $(document).ready(function () {
     },
   ];
 
-
-  function getGenreId(){
-    $("#movieBtnGenre").click(function(){
-      if($("#genreSelect").val() === val.name){
-        const genreId = val.id;
-        console.log(genreId);
-      }
-    });
-  }
-  getGenreId();
+  // $("#movieBtnGenere").click(function() {
   // const length = Object.keys(genres).length;
   // const randomNumber = Math.floor(Math.random() * length + 0);
   // let randomGenreID = genres[Object.keys(genres)[randomNumber]];
@@ -406,7 +424,7 @@ $(document).ready(function () {
     let randomGenreInfo3 = randomGenreFilm3.overview;
     let randomGenrePoster3 = randomGenreFilm3.poster_path;
 
-    const genreSelection = $("#genreSelect").val();  
+    const genreSelection = $("#genreSelect").val(); 
 
     $("#movieBtnGenre").click(function(){
       genres.forEach(function (val,){
