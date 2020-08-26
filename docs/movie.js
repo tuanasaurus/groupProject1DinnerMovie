@@ -1,124 +1,5 @@
 $(document).ready(function () {
-  const categoriesArray = [
-    "bbq",
-    "burgers",
-    "burmese",
-    "chinese",
-    "comfortfood",
-    "french",
-    "indpak",
-    "italian",
-    "japanese",
-    "korean",
-    "mediterranean",
-    "mexican",
-    "pizza",
-    "sushi",
-    "soulfood",
-    "thai",
-    "tradamerican",
-    "vegan",
-    "vegetarian",
-    "vietnamese",
-  ];
-
-  //Grab the location that the user inputted,
-  // Grab cuisine that the user inputted,
-  // Conditional statement to check whether the cuisine is empty or not,
-  //If the cuisine is empty then grab a random cuisine
-  const apiKey =
-    "2w5brNs3HF2ABKHAAT-I-QePQxcgY5vkGcva4WnpZxo1Dn9CLUevWblrCofVxQJymD3JEgh9JXfDDv3qRbTtBO-AV7TskU-h0fvMXwG1pdXc12iCTgiiLnThOvw9X3Yx";
-  //click functionality to the Locate button to get a random restaurant based on location
-
-  $("#locateBtn").click(function () {
-    let location = $("#myLocation").val().trim();
-    location = encodeURI(location);
-    console.log(location);
-    $.ajax({
-      url:
-        "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
-        location,
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + apiKey,
-      },
-    }).then(function (response) {
-      console.log(response);
-      //then i want to click the Randomize button to get a random restaurant based on location and cuisine choice
-      const $randomizer = $(".random");
-      // --IGNORE THE FOLLOWING COMMENTED OUT LINES - KEEPING THEM IN CASE I NEED TO USE: ---
-      let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
-
-      let restaurants = response.businesses[randomRestaurant].name;
-      let image = response.businesses[randomRestaurant].image_url;
-      let url = response.businesses[randomRestaurant].url;
-      let phone = response.businesses[randomRestaurant].phone;
-      let price = response.businesses[randomRestaurant].price;
-      let city = response.businesses[randomRestaurant].location.city;
-      const categories = response.businesses[randomRestaurant].categories[0].alias;
-
-      let restaurants1 = response.businesses[5].name;
-      let price1 = response.businesses[5].price;
-      const categories1 = response.businesses[5].categories[0].alias;
-
-      let restaurants2 = response.businesses[10].name;
-      let price2 = response.businesses[10].price;
-      const categories2 = response.businesses[10].categories[0].alias;
-
-      // console.log("randomRestaurant", randomRestaurant);
-      // console.log("restaurants", restaurants);
-
-      const restaurantName0 = $("<h2 class='card-title'>").text(restaurants);
-      // const restaurantImage0 = $("<img class='card-image'>").src(image);
-      const restaurantPrice0 = $("<p class='card-title'>").text(price);
-      const restaurantCategory0 = $("<p class='card-title'>").text(categories);
-      $("#foodCard1").append(restaurantName0, restaurantPrice0, restaurantCategory0);
-      const restaurantName1 = $("<h2 class='card-title'>").text(restaurants1);
-      const restaurantPrice1 = $("<p class='card-title'>").text(price1);
-      const restaurantCategory1 = $("<p class='card-title'>").text(categories1);
-      $("#foodCard2").append(restaurantName1, restaurantPrice1, restaurantCategory1);
-      const restaurantName2 = $("<h2 class='card-title'>").text(restaurants2);
-      const restaurantPrice2 = $("<p class='card-title'>").text(price2);
-      const restaurantCategory2 = $("<p class='card-title'>").text(categories2);
-      $("#foodCard3").append(restaurantName2, restaurantPrice2, restaurantCategory2);
-
-      //to target the selected option
-      let cuisinePick = $(".cuisineSelect").val();
-      // console.log(cuisinePick);
-
-      //This function loops through the list of restaurants to find 3 random ones
-      $randomizer.click(function() {
-        // console.log("clicked");
-        for (let i = 0; i < 3; i++) {
-          let randomRestaurant = Math.floor(Math.floor(Math.random() * 20));
-          let restaurant = response.businesses[randomRestaurant].name;
-          let image = response.businesses[randomRestaurant].image_url;
-          let url = response.businesses[randomRestaurant].url;
-          let phone = response.businesses[randomRestaurant].phone;
-          let price = response.businesses[randomRestaurant].price;
-          let city = response.businesses[randomRestaurant].location.city;
-          const categories = response.businesses[randomRestaurant].categories;
-          //and then loops through the 3 randomly selected restaurants' categories array
-          for (let index = 0; index < categories.length; index++) {
-            //and then check if the categoriesArray set on line 21 matches the object categories
-            if (cuisinePick === categoriesArray.includes(categories[index].alias)) {
-              // console.log(restaurant);
-              // this is for appending the restaurant name and other values
-              $("#name").append.text(restaurant);
-              $("#image-url").attr("href", image);
-              $("#url").attr("href", url);
-              $("#phone").append.text(phone);
-              $("#price").append.text(price);
-              $("#city").append.text(city);
-              break;
-            }
-          }
-          // console.log(randomRestaurant);
-        }
-      });
-    });
-  });
-  Math.random();
+    Math.random();
   // function that gets random number to use for ajax request for random page and index.
   function getRandomNum(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -224,23 +105,16 @@ $(document).ready(function () {
         const movieTitle = $("<h1 class='card-title'>").text(response.results[i].title);
         const movieInfo = $("<p class='card-author'>").text(response.results[i].overview);
         const moviePoster = $("<img class='card-image'>").attr("src", "https://image.tmdb.org/t/p/w300_and_h450_bestv2/" + response.results[i].backdrop_path);
-        console.log(response.results[i]);
         const movieCard = $("<div class='card cell'>").append(moviePoster, movieTitle, movieInfo);
         $("#movieCards").append(movieCard);
-        console.log(response.results[i]);
+        // console.log(response.results[i]);
       }
     });
     
-    // $("#movieBtnRandom").click(function(){
-    // const movieTitle = $("<h1 class='card-title'>").text(randomFilmTitle);
-    // const movieInfo = $("<p class='card-author'>").text(randomFilmInfo);
-    // const moviePoster = $("<img class='card-image'>").attr("scr", randomFilmPoster);
-    // $("#movieCard1").append(moviePoster, movieTitle, movieInfo );
+    // // calling a call back function
+    // getMoviePreview(randomFilmID, function (previewUrl) {
+    //   // console.log(previewUrl);
     // });
-    // calling a call back function
-    getMoviePreview(randomFilmID, function (previewUrl) {
-      // console.log(previewUrl);
-    });
   });
 
 
@@ -339,17 +213,17 @@ $(document).ready(function () {
   // console.log(randomGenreID);
   // ajax to use with the geneate random genre
 
-  function getGenreID(){
-    genres.forEach(function(val){
-      // console.log(val.id);
-      if($("#genreSelect").val() === val.name){
-        console.log($("#genreSelect"));
-        let genreID = val.id;
-        return genreID;
-      }
-      });
-    }
-  getGenreID();
+  // function getGenreID(){
+  //   genres.forEach(function(val){
+  //     // console.log(val.id);
+  //     if($("#genreSelect").val() === val.name){
+  //       console.log($("#genreSelect"));
+  //       let genreID = val.id;
+  //       return genreID;
+  //     }
+  //     });
+  //   }
+  // getGenreID();
 
   $("#movieBtnGenre").click(function(){
     console.log($("#genreSelect"));
@@ -389,5 +263,4 @@ $(document).ready(function () {
   
   });
 });
-
 });

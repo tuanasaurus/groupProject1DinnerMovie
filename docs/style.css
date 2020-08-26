@@ -212,6 +212,7 @@
     font-size: 2rem;
     grid-row: 1 / 2;
     grid-column: 1 / 2;
+    padding: .5em;
   }
   
   .card-icon {
@@ -228,6 +229,9 @@
   }
   
   .card-author {
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-bottom: .5em;
     grid-row: 2 / 3;
     grid-column: 1 / 2;
     align-self: bottom;
