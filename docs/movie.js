@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    Math.random();
+Math.random();
   // function that gets random number to use for ajax request for random page and index.
   function getRandomNum(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -251,7 +251,6 @@ $(document).ready(function () {
 
     // Function Get the the group of results we want 
     const numberToShow = 3;
-    let randomMovies = "";
     for (i = 0; i < numberToShow; i++){
       const movieTitle = $("<h1 class='card-title'>").text(response.results[i].title);
       const movieInfo = $("<p class='card-author'>").text(response.results[i].overview);
@@ -263,4 +262,4 @@ $(document).ready(function () {
   
   });
 });
-});
+}); 
