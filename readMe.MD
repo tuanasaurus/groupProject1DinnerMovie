@@ -4,9 +4,9 @@ Simplifying the the movie and food decision on your night in
 
 ### Team Members
 
-Stephanie Sevadjian 
-Ryan Mendez
-Tuan Phan
+- Stephanie Sevadjian 
+- Ryan Mendez
+- Tuan Phan
 
 ### App Functionality 
 
