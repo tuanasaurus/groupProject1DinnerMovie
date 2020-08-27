@@ -37,10 +37,10 @@ $(document).ready(function () {
         console.log(cuisinePick);
         // console.log(location);
         $.ajax({
-          url:
+            url:
             "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
             location +
-            "&catergories=" +
+            "&term=" +
             cuisinePick,
           method: "GET",
           headers: {
@@ -65,7 +65,7 @@ $(document).ready(function () {
     $("#randomlocateBtn").click(function () {
       let location = $("#myLocation").val().trim();
       location = encodeURI(location);
-      // console.log(location);
+      console.log(location);
       $.ajax({
         url:
           "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
