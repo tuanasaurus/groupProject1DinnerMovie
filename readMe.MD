@@ -17,6 +17,13 @@ Simplifying the the movie and food decision on your night in
 - User can get 3 random restaurants by location
 - User can get 3 random restaurants by location & cuisine choice
 
+### Future Development
+
+- Ability to rent or purchase movies directly from the app
+- Add information on where the movies displayed are already streaming
+- Ability to order food from the restaurants displayed directly from the app
+- Add search functionality for ordering drinks to go along with your movie and meal
+
 ### Technology Stack
 
 - Yelp API: https://www.yelp.com/developers
