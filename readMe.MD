@@ -19,16 +19,16 @@ Simplifying the the movie and food decision on your night in
 
 ### Technology Stack
 
-Yelp API: https://www.yelp.com/developers
-TMDB API: https://developers.themoviedb.org/3
-ZURB Foundation: https://get.foundation/ 
+- Yelp API: https://www.yelp.com/developers
+- TMDB API: https://developers.themoviedb.org/3
+- ZURB Foundation: https://get.foundation/ 
 
 
 ### Applicaiton Links
 
 ![Landing Page](docs/assets/NIght_in_web_app.png)
 
-Github: https://github.com/tuanasaurus/groupProject1DinnerMovie
-Github Pages:https://tuanasaurus.github.io/groupProject1DinnerMovie/ 
-Google SlideS Presentation:https://docs.google.com/presentation/d/1o6T32HTsrqgOKuNBl4RKtw2j3hxzNSbVF8KMcprXilA/edit?usp=sharing
-Project Docs: https://docs.google.com/document/d/1tQNaK2J5OyitXoWLKasDIxyCpT5CuAvKIwymPYmypnE/edit?usp=sharing
+- Github: https://github.com/tuanasaurus/groupProject1DinnerMovie
+- Github Pages:https://tuanasaurus.github.io/groupProject1DinnerMovie/ 
+- Google SlideS Presentation:https://docs.google.com/presentation/d/1o6T32HTsrqgOKuNBl4RKtw2j3hxzNSbVF8KMcprXilA/edit?usp=sharing
+- Project Docs: https://docs.google.com/document/d/1tQNaK2J5OyitXoWLKasDIxyCpT5CuAvKIwymPYmypnE/edit?usp=sharing
