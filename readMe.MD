@@ -23,6 +23,7 @@ Simplifying the the movie and food decision on your night in
 - Add information on where the movies displayed are already streaming
 - Ability to order food from the restaurants displayed directly from the app
 - Add search functionality for ordering drinks to go along with your movie and meal
+- Use Google Places / Maps to display on the food cards so the user can see exactly where the restaurant is located, how far away it is
 
 ### Technology Stack
 
