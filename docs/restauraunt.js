@@ -40,7 +40,7 @@ $(document).ready(function () {
           url:
             "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=" +
             location +
-            "&catergories=" +
+            "&term=" +
             cuisinePick,
           method: "GET",
           headers: {
